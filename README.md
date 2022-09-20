@@ -75,6 +75,8 @@ SD Card is used in 4 Pin SPI configuration.
 - It is recommended to download and use the (Mu Editor)(https://codewith.mu/en/download)
 - You can use the Mu Editor to upload the MicroPython Firmware.
 
+### Hardware Modification:
+- On the back of the xchip, is a solder pad called ```LED_ON```. If you don't like the blue power LED, you can carefully cut the connection between the two pads. And you can naturally reverse that by soldering them together again.
 
 ### I²C
 I²C's SDA and SCL is not on the standard ESP32's Pin normally used in Arduino. The pins might have to be set before the `Wire.begin()` statement like this:
@@ -156,7 +158,6 @@ void loop() {
   delay(3000);
 }
 ```
-
 
 ## Troubleshooting
 - If you try to upload code and getting this message ```A fatal error occurred: Timed out waiting for packet content``` or ```A fatal error occurred: Invalid head of packet (0xE0)```, change the transfer speed to 460800 pbs.
