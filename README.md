@@ -41,6 +41,9 @@ SD Card is used in 4 Pin SPI configuration.
 |  0|  |DAT1|
 |  1|  |DAT2|
 
+> In Arduino: Choose ```ESPC3 Dev Module``` and use the PPU</br>
+> Then find this example: ```Examples``` :arrow_right: ```Examples for ESPC3 Dev Module```  :arrow_right: ```SD``` :arrow_right: ```SD_Test```</br>
+> Change this line ```if(!SD.begin()){``` :arrow_right: ```if(!SD.begin(4)){```
 
 ### Other Pins
 | Function |  GPIO | Notes|
@@ -66,6 +69,7 @@ SD Card is used in 4 Pin SPI configuration.
 - You can use two settings:
   - **Board:** Choose the ```ESP32C3 Dev Module```
     - With this board you have to set the I²C pins: ```Wire.setPins(5,6);```
+    - Use the PPU to print to Serial. You can use ```ESP_LOGE("Some short text", "Some long text");``` to print to serial on USB.
   - **Board:** Choose the ```Adafruit QT Py ESP32-C3```
     - With this board you need to redirect your serial connection if you use the PPU: ```#define Serial Serial0```
  
@@ -112,14 +116,13 @@ void setup() {
 
 #### Example: SD Card over SPI
 ```C
-#define SPI_MISO 8
-#define SPI_MOSI 7
-#define SPI_SCK 10
+#include "SD.h"
+#include "SPI.h"
+
 #define SD_CS 4
 
 void setup() {
-  spi.begin(SPI_SCK, SPI_MISO, SPI_MOSI, SD_CS);
-  if (!SD.begin(SD_CS, spi)) {
+  if (!SD.begin(SD_CS)) {
   // Error code
   }
 }
@@ -130,6 +133,7 @@ void setup() {
 #include <EthernetENC.h>
 #include <SPI.h>
 #include "PubSubClient.h"
+
 uint8_t mac[6] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x06};
 EthernetClient ethClient;
 PubSubClient mqttClient;
