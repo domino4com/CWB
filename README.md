@@ -95,23 +95,9 @@ void setup() {
 ### SPI
 
 #### Example: LoRa over SPI
+I suggest using this library [RadioLib](https://github.com/jgromes/RadioLib), choose examples using ```SX127x```
 ```C
-#include <SPI.h>
-#include <RadioLib.h>
-#define SPI_MISO 8
-#define SPI_MOSI 7
-#define SPI_SCK 10
-#define LORA_CS 4 // NSS
-#define LORA_DIO0 0
-#define LORA_DIO1 -1
-#define LORA_RESET -1
-
-SPISettings spiSettings (2000000, MSBFIRST, SPI_MODE0);
-SX1278 radio = new Module (LORA_CS, LORA_DIO0, LORA_RESET, LORA_DIO1, mySpi, spiSettings);
-
-void setup() {
-  mySpi.begin();
-}
+SX1278 radio = new Module(4, 0,RADIOLIB_NC,RADIOLIB_NC);
 ```
 
 #### Example: SD Card over SPI
