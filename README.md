@@ -70,6 +70,7 @@ SD Card is used in 4 Pin SPI configuration.
   - **Board:** Choose the ```ESP32C3 Dev Module```
     - With this board you have to set the I²C pins: ```Wire.setPins(5,6);```
     - Use the PPU to print to Serial. You can use ```ESP_LOGE("Some short text", "Some long text");``` to print to serial on USB.
+    - You can also print to Serial USB, by selecting ```USB CDC On Boot: "Enabled"``` in the Tools menu.
   - **Board:** Choose the ```Adafruit QT Py ESP32-C3```
     - With this board you need to redirect your serial connection if you use the PPU: ```#define Serial Serial0```
  
